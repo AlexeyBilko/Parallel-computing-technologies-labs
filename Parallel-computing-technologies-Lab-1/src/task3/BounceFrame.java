@@ -32,15 +32,41 @@ public class BounceFrame extends JFrame {
         buttonStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 System.exit(0);
             }
         });
 
-buttonStart100.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < 100; i++){
+        buttonStart100.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddBalls(100);
+            }
+        });
+
+        buttonStart1000.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddBalls(1000);
+            }
+        });
+        buttonStart5000.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddBalls(5000);
+            }
+        });
+
+
+        buttonPanel.add(buttonStop);
+        buttonPanel.add(buttonStart100);
+        buttonPanel.add(buttonStart1000);
+        buttonPanel.add(buttonStart5000);
+
+        content.add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    void AddBalls(int amount){
+        for (int i = 0; i < amount; i++){
             Ball b = new Ball(canvas,blue);
             canvas.add(b);
 
@@ -53,49 +79,5 @@ buttonStart100.addActionListener(new ActionListener() {
         BallThread thread = new BallThread(b);
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
-    }
-});
-        buttonStart1000.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < 1000; i++){
-                    Ball b = new Ball(canvas,blue);
-                    canvas.add(b);
-                    BallThread thread = new BallThread(b);
-                    thread.setPriority(Thread.MIN_PRIORITY);
-                    thread.start();
-                }
-                Ball b = new Ball(canvas,red);
-                canvas.add(b);
-                BallThread thread = new BallThread(b);
-                thread.setPriority(Thread.MAX_PRIORITY);
-                thread.start();
-            }
-        });
-        buttonStart5000.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < 5000; i++){
-                    Ball b = new Ball(canvas,blue);
-                    canvas.add(b);
-
-                    BallThread thread = new BallThread(b);
-                    thread.setPriority(Thread.MIN_PRIORITY);
-                    thread.start();
-                }
-                Ball b = new Ball(canvas,red);
-                canvas.add(b);
-                BallThread thread = new BallThread(b);
-                thread.setPriority(Thread.MAX_PRIORITY);
-                thread.start();
-            }
-        });
-
-        buttonPanel.add(buttonStop);
-        buttonPanel.add(buttonStart100);
-        buttonPanel.add(buttonStart1000);
-        buttonPanel.add(buttonStart5000);
-
-        content.add(buttonPanel, BorderLayout.SOUTH);
     }
 }

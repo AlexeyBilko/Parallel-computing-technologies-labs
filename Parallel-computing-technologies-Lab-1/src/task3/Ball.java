@@ -19,7 +19,7 @@ class Ball {
         this.color = color;
         if (Math.random() < 0.5) {
 //            x = new Random().nextInt(this.canvas.getWidth());
-            x=0;
+            x = 0;
             y = 0;
         } else {
             x = 0;
@@ -28,9 +28,6 @@ class Ball {
         }
     }
 
-    public static void f() {
-        int a = 0;
-    }
 
     public void draw(Graphics2D g2) {
         g2.setColor(this.color);

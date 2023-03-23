@@ -34,9 +34,6 @@ class Ball {
         }
     }
 
-    public static void f() {
-        int a = 0;
-    }
 
     public void draw(Graphics2D g2) {
         g2.setColor(Color.darkGray);
@@ -66,30 +63,14 @@ class Ball {
         this.canvas.repaint();
     }
 
-//    public boolean InHole(ArrayList<Hole> holes) {
-//        if(holes.isEmpty())
-//        {
-//            return false;
-//        }
-//
-//        for (Hole hole : holes)
-//        {
-////            if (hole.GetX() == this.x && hole.GetY() == this.y)
-//            if(pow(this.YSIZE+hole.GetYSIZE(), 2) == pow(this.x - hole.GetX(),2) + pow(this.y-hole.GetY(),2));
-//            {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-public boolean InHole(){
-    for (Hole h : this.canvas.GetHoles()) {
-        if (InHole(h)){
-            return true;
+    public boolean InHole(){
+        for (Hole h : this.canvas.GetHoles()) {
+            if (InHole(h)){
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
     private boolean InHole(Hole hole){
         return x >= hole.GetX() && x <= hole.GetX() + hole.GetXSIZE() && y >= hole.GetY() && y <= hole.GetY() + hole.GetXSIZE();
     }

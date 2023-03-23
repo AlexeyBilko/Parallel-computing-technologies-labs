@@ -30,7 +30,6 @@ public class BounceFrame extends JFrame {
         buttonStart100.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 Ball b = new Ball(canvas, blue);
                 canvas.add(b);
                 BallThread ballThread = new BallThread(b);
@@ -43,7 +42,6 @@ public class BounceFrame extends JFrame {
                     ballThread.start();
                     prev = ballThread;
                 }
-
             }
         });
         buttonPanel.add(buttonStart100);

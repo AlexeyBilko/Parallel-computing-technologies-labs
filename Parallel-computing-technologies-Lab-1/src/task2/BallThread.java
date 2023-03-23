@@ -2,7 +2,6 @@ package task2;
 
 public class BallThread extends Thread {
     private Ball b;
-    private BallCanvas ballCanvas;
     private BallsInHolesCounter coughtBalls;
 
     public BallThread(Ball ball, BallsInHolesCounter coughtBalls){
