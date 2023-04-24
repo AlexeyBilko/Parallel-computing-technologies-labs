@@ -35,7 +35,6 @@ public class BounceFrame extends JFrame {
         JButton buttonStart10000 = new JButton("Add 10000 balls");
         JButton buttonStop = new JButton("Stop");
         buttonStart.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -51,7 +50,6 @@ public class BounceFrame extends JFrame {
         buttonStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 System.exit(0);
             }
         });
@@ -64,18 +62,19 @@ public class BounceFrame extends JFrame {
                 canvas.repaint();
             }
         });
-buttonStart100.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < 100; i++){
-            Ball b = new Ball(canvas);
-            canvas.add(b);
 
-            BallThread thread = new BallThread(b, CatchedBallsCounter);
-            thread.start();
-        }
-    }
-});
+        buttonStart100.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < 100; i++){
+                    Ball b = new Ball(canvas);
+                    canvas.add(b);
+
+                    BallThread thread = new BallThread(b, CatchedBallsCounter);
+                    thread.start();
+                }
+            }
+        });
         buttonStart1000.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
