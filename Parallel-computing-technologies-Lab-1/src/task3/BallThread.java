@@ -3,7 +3,6 @@ package task3;
 public class BallThread extends Thread {
     private Ball b;
     private BallCanvas ballCanvas;
-
     public BallThread(Ball ball){
         b = ball;
     }

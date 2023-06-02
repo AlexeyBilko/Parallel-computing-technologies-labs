@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int[] matrixSizes = {100, 200, 300, 400, 500};
+        int[] matrixSizes = {100, 500, 1000, 2000, 5000};
         int[] threadCounts = {1, 2, 4, 8};
         int numTests = 5;
 

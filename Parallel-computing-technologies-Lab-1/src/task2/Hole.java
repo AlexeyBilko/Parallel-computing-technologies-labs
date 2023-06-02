@@ -6,26 +6,21 @@ import java.util.Random;
 
 class Hole {
     private Component canvas;
-    private static final int XSIZE = 20;
-    private static final int YSIZE = 20;
+    private static final int Radius = 20;
     private int x = 0;
     private int y = 0;
 
-    public int GetXSIZE()
+    public int GetRadius()
     {
-        return  XSIZE;
+        return Radius;
     }
-    public int GetX()
+    public int GetPosition_X()
     {
         return this.x;
     }
-    public int GetY()
+    public int GetPosition_Y()
     {
         return this.y;
-    }
-    public int GetYSIZE()
-    {
-        return YSIZE;
     }
 
     public Hole(Component c) {
@@ -47,7 +42,7 @@ class Hole {
 
     public void draw(Graphics2D g2) {
         g2.setColor(Color.red);
-        g2.fill(new Ellipse2D.Double(x, y, XSIZE, YSIZE));
+        g2.fill(new Ellipse2D.Double(x, y, Radius, Radius));
 
     }
 

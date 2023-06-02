@@ -18,4 +18,8 @@ public class Console {
         flag.set(!condition);
         notifyAll();
     }
+
+    public synchronized void SimplePrintSymbol(char symbol){
+        System.out.print(symbol);
+    }
 }

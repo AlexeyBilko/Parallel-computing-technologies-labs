@@ -14,27 +14,42 @@ public class Counter {
         value--;
     }
 
-    // Method-level synchronization using synchronized keyword
-    public synchronized void increment() {
+    public synchronized void syncIncrement() {
         value++;
     }
 
-    public synchronized void decrement() {
+    public synchronized void syncDecrement() {
         value--;
     }
 
-    // Block-level synchronization using synchronized keyword and this object lock
     public void decrementWithBlock() {
         synchronized (this) {
             value--;
         }
     }
+    public void incrementWithBlock() {
+        synchronized (this) {
+            value++;
+        }
+    }
 
-    // Block-level synchronization using synchronized keyword and a separate lock object
-    private final Object lockObject = new Object();
+    private final Object lock = new Object();
+
+    public void incrementWithObjectLock() {
+        lockValue(() -> {
+            value++;
+        });
+    }
+
     public void decrementWithObjectLock() {
-        synchronized (lockObject) {
+        lockValue(() -> {
             value--;
+        });
+    }
+
+    private void lockValue(Runnable action) {
+        synchronized (lock) {
+            action.run();
         }
     }
 

@@ -2,20 +2,21 @@ package task2;
 
 import javax.swing.*;
 
-public class BallsInHolesCounter {
-    public volatile int value;
+public class ScoredBalls {
+    public volatile int count;
     public final JLabel counterLabel;
-    public BallsInHolesCounter(JLabel ctrLabel){
-        value = 0;
+
+    public ScoredBalls(JLabel ctrLabel){
+        count = 0;
         counterLabel = ctrLabel;
     }
     public synchronized void increment(){
-        value++;
+        count++;
         counterLabel.setText(this.toString());
     }
 
     @Override
     public String toString() {
-        return "Balls caught: " + value;
+        return "Balls scored: " + count;
     }
 }

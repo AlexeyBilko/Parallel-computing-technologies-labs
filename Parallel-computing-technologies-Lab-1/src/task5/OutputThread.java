@@ -15,8 +15,9 @@ public class OutputThread extends Thread {
 
     @Override
     public synchronized void run() {
-        for (int i = 0; i < count; i++) {
-            console.PrintSymbol(symbol, expectedFlagValue);
-        }
+            for (int i = 0; i < count; i++) {
+                console.PrintSymbol(symbol, expectedFlagValue);
+                //console.SimplePrintSymbol(symbol);
+            }
     }
 }

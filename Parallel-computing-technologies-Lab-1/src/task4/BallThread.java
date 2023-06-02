@@ -18,7 +18,7 @@ public class BallThread extends Thread {
                 i++;
                 Thread.sleep(5);
             } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                throw new RuntimeException(e);
             }
         }
 

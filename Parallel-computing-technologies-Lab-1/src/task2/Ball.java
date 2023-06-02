@@ -2,11 +2,7 @@ package task2;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.function.IntToDoubleFunction;
-
-import static java.lang.Math.pow;
 
 class Ball {
     private BallCanvas canvas;
@@ -72,6 +68,6 @@ class Ball {
         return false;
     }
     private boolean InHole(Hole hole){
-        return x >= hole.GetX() && x <= hole.GetX() + hole.GetXSIZE() && y >= hole.GetY() && y <= hole.GetY() + hole.GetXSIZE();
+        return x >= hole.GetPosition_X() && x <= hole.GetPosition_X() + hole.GetRadius() && y >= hole.GetPosition_Y() && y <= hole.GetPosition_Y() + hole.GetRadius();
     }
 }

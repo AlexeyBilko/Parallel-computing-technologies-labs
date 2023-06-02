@@ -22,9 +22,8 @@ public class MatrixMultiplier {
     }
 
     public static Result multiplyMatrices(int[][] matrix1, int[][] matrix2, int numberOfThreads) {
-        int m = matrix1.length;
-        int n = matrix1[0].length;
-        int p = matrix2[0].length;
+        int m = matrix1.length; // rows in m1
+        int p = matrix2[0].length; // columns in row in m2
         int[][] result = new int[m][p];
 
         ExecutorService executor = Executors.newFixedThreadPool(numberOfThreads);
