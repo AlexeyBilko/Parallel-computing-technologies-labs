@@ -45,21 +45,6 @@ public class Search extends RecursiveTask<HashMap<String, HashMap<String, Long>>
         return this.resultFiles;
     }
 
-    private List<String> getWords() throws IOException {
-        List<String> words = new ArrayList<>();
-        String currentLine;
-        var bufferedReader = new BufferedReader(new FileReader(textFile));
-        while ((currentLine = bufferedReader.readLine()) != null) {
-            var tokens = currentLine.split("[\\s,:;.?!]+");
-            for (var token : tokens) {
-                if (token.matches("\\p{L}[\\p{L}-']*")) {
-                    words.add(token);
-                }
-            }
-        }
-        return words;
-    }
-
     private void processTextFile() throws IOException {
         HashMap<String, Long> keywords = new HashMap<>();
         var words = this.getWords();
@@ -77,5 +62,22 @@ public class Search extends RecursiveTask<HashMap<String, HashMap<String, Long>>
         if (!keywords.isEmpty()) {
             resultFiles.put(textFile.getName(), keywords);
         }
+    }
+
+    private List<String> getWords() throws IOException {
+        List<String> words = new ArrayList<>();
+        String currentLine;
+
+        var bufferedReader = new BufferedReader(new FileReader(textFile));
+
+        while ((currentLine = bufferedReader.readLine()) != null) {
+            var tokens = currentLine.split("[\\s,:;.?!]+");
+            for (var token : tokens) {
+                if (token.matches("\\p{L}[\\p{L}-']*")) {
+                    words.add(token);
+                }
+            }
+        }
+        return words;
     }
 }

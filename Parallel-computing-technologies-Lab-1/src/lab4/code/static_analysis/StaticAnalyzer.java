@@ -24,11 +24,11 @@ public class StaticAnalyzer extends RecursiveTask<HashMap<Integer, Long>> {
                 subTask.fork();
             }
             for (var subTask : subTasks) {
-                extendSample(subTask.join());
+                update(subTask.join());
             }
         } else {
             try {
-                processTextFile();
+                processingTextFile();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -36,17 +36,16 @@ public class StaticAnalyzer extends RecursiveTask<HashMap<Integer, Long>> {
         return this.map;
     }
 
-    public HashMap<Integer, Double> getDistributionLaw() {
-        HashMap<Integer, Double> distributionLaw = new HashMap<>();
-        double sum = 0;
-        for (var entry : map.entrySet()) {
-            sum += entry.getValue();
+
+    private void processingTextFile() throws IOException {
+        var words = this.getWords();
+        for (var word : words) {
+            if (map.containsKey(word.length())) {
+                map.put(word.length(), map.get(word.length()) + 1);
+            } else {
+                map.put(word.length(), 1L);
+            }
         }
-        for (var entry : map.entrySet()) {
-            double probability = entry.getValue() / sum;
-            distributionLaw.put(entry.getKey(), probability);
-        }
-        return distributionLaw;
     }
 
     public double getMean() {
@@ -72,7 +71,20 @@ public class StaticAnalyzer extends RecursiveTask<HashMap<Integer, Long>> {
         return Math.sqrt(this.getVariance());
     }
 
-    private void extendSample(HashMap<Integer, Long> extensionSample) {
+    public HashMap<Integer, Double> getDistributionLaw() {
+        HashMap<Integer, Double> distributionLaw = new HashMap<>();
+        double sum = 0;
+        for (var entry : map.entrySet()) {
+            sum += entry.getValue();
+        }
+        for (var entry : map.entrySet()) {
+            double probability = entry.getValue() / sum;
+            distributionLaw.put(entry.getKey(), probability);
+        }
+        return distributionLaw;
+    }
+
+    private void update(HashMap<Integer, Long> extensionSample) {
         for (var entry : extensionSample.entrySet()) {
             var key = entry.getKey();
             var value = entry.getValue();
@@ -97,16 +109,5 @@ public class StaticAnalyzer extends RecursiveTask<HashMap<Integer, Long>> {
             }
         }
         return words;
-    }
-
-    private void processTextFile() throws IOException {
-        var words = this.getWords();
-        for (var word : words) {
-            if (map.containsKey(word.length())) {
-                map.put(word.length(), map.get(word.length()) + 1);
-            } else {
-                map.put(word.length(), 1L);
-            }
-        }
     }
 }
